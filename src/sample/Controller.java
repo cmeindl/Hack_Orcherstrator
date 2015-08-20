@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
+import java.util.ArrayList;
+
 public class Controller {
     ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
 
@@ -16,27 +18,30 @@ public class Controller {
 
     public void Push_Pay_Click(ActionEvent actionEvent) {
        // ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
-        SPAClass.PutAccountBalance(4000.00,"AwesomeMelon","90210");
+
         Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
         SPAClass.SendToServer(new ScheduledPayments("Wages", "033900", "90000", "4_The_Wage_Slaves", 3000000.00, "priority", "1", "2015-08-20", "open"));
         SPAClass.SendToServer(new ScheduledPayments("Aus Gov", "013900", "922000", "Customs", 9000.00, "standard", "2", "2015-08-20 14:00:00", "open"));
         SPAClass.SendToServer(new ScheduledPayments("Wages", "033900", "90000", "4_The_Wage_Slaves-SMALL", 100.00, "priority", "1", "2015-08-20", "open"));
-        SPAClass.SendToServer(new ScheduledPayments("IBM", "033900", "90000", "The MIX", 12200.00, "priority", "2", "2015-08-20", "open"));
+        SPAClass.SendToServer(new ScheduledPayments("IBM", "033900", "90000", "The_MIX", 12200.00, "priority", "2", "2015-08-20", "open"));
 
 
     }
 
     public void But2_Click(ActionEvent actionEvent) {
         //ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
+//SPAClass.BuildSchedulePayArray();
+   //    ArrayList<ScheduledPayments> SPARRAy =   SPAClass.BuildSchedulePayArray();
+      SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
+       // SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
 
-        SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
-        //SPAClass.PutAccountBalance(4000.00,"AwesomeMelon","90210");
-        Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+//        //SPAClass.PutAccountBalance(4000.00,"AwesomeMelon","90210");
+     Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
 
     }
 
     public void But3_click(ActionEvent actionEvent) {
-        SPAClass.PutAccountBalance(2000000.00,"AwesomeMelon","90210");
+        SPAClass.PutAccountBalance(2000000.00, "AwesomeMelon", "90210");
         Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
 
     }
@@ -52,11 +57,22 @@ public class Controller {
     }
 
     public void But6_click(ActionEvent actionEvent) {
-        SPAClass.PutAccountBalance(12000000.00,"AwesomeMelon","90210");
+        SPAClass.PutAccountBalance(12000000.00, "AwesomeMelon", "90210");
     }
 
     public void But7_click(ActionEvent actionEvent) {
         SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
+
+
+    }
+
+    public void Cleanup_Click(ActionEvent actionEvent) {
+        SPAClass.DeleteSched("AwesomeMelon","4_The_Wage_Slaves");
+        SPAClass.DeleteSched("AwesomeMelon","Customs");
+        SPAClass.DeleteSched("AwesomeMelon","4_The_Wage_Slaves-SMALL");
+        SPAClass.DeleteSched("AwesomeMelon","The_MIX");
+        SPAClass.DeleteSched("AwesomeMelon","Make_sure_We_Win");
+        SPAClass.PutAccountBalance(4000.00,"AwesomeMelon","90210");
 
 
     }

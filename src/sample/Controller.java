@@ -6,9 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Controller {
+    public TextArea LastClick;
     ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
 
     public Button But1;
@@ -20,10 +22,12 @@ public class Controller {
        // ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
 
         Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
-        SPAClass.SendToServer(new ScheduledPayments("Wages", "033900", "90000", "4_The_Wage_Slaves", 3000000.00, "priority", "1", "2015-08-20", "open"));
-        SPAClass.SendToServer(new ScheduledPayments("Aus Gov", "013900", "922000", "Customs", 9000.00, "standard", "2", "2015-08-20 14:00:00", "open"));
-        SPAClass.SendToServer(new ScheduledPayments("Wages", "033900", "90000", "4_The_Wage_Slaves-SMALL", 100.00, "priority", "1", "2015-08-20", "open"));
-        SPAClass.SendToServer(new ScheduledPayments("IBM", "033900", "90000", "The_MIX", 12200.00, "priority", "2", "2015-08-20", "open"));
+        SPAClass.SendToServer(new ScheduledPayments("Wages", "033900", "90000", "Salaries", 3000000.00, "priority", "1", "2015-08-21", "open"));
+        SPAClass.SendToServer(new ScheduledPayments("Aus Gov", "013900", "922000", "Customs_Duties", 9000.00, "standard", "2", "2015-08-21 14:00:00", "open"));
+        SPAClass.SendToServer(new ScheduledPayments("Wages", "033900", "90000", "Salaries2", 100.00, "priority", "1", "2015-08-21", "open"));
+        SPAClass.SendToServer(new ScheduledPayments("IBM", "033900", "90000", "The_MIX", 12200.00, "priority", "2", "2015-08-21", "open"));
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
 
 
     }
@@ -35,45 +39,61 @@ public class Controller {
       SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
        // SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
 
+
 //        //SPAClass.PutAccountBalance(4000.00,"AwesomeMelon","90210");
      Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
 
     }
 
     public void But3_click(ActionEvent actionEvent) {
         SPAClass.PutAccountBalance(2000000.00, "AwesomeMelon", "90210");
         Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
-
+        //  SPAClass.sendSMS("+61403367829", "Payment not Made to Customs");
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
     }
 
     public void But4_click(ActionEvent actionEvent) {
-      //  SPAClass.sendSMS("+61403367829", "Payment not Made to Customs");
+
         Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
     }
+
 
     public void But5_click(ActionEvent actionEvent) {
         SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
         Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
     }
+
 
     public void But6_click(ActionEvent actionEvent) {
         SPAClass.PutAccountBalance(12000000.00, "AwesomeMelon", "90210");
+        Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
     }
 
     public void But7_click(ActionEvent actionEvent) {
         SPAClass.ChecktoMakePayment(SPAClass.BuildSchedulePayArray(), SPAClass.GetAccountBalance("AwesomeMelon", "90210"), "AwesomeMelon", "90210");
-
-
+        Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
     }
 
     public void Cleanup_Click(ActionEvent actionEvent) {
-        SPAClass.DeleteSched("AwesomeMelon","4_The_Wage_Slaves");
-        SPAClass.DeleteSched("AwesomeMelon","Customs");
-        SPAClass.DeleteSched("AwesomeMelon","4_The_Wage_Slaves-SMALL");
+        SPAClass.DeleteSched("AwesomeMelon","Salaries");
+        SPAClass.DeleteSched("AwesomeMelon","Salaries2");
+        SPAClass.DeleteSched("AwesomeMelon","Customs_Duties");
         SPAClass.DeleteSched("AwesomeMelon","The_MIX");
         SPAClass.DeleteSched("AwesomeMelon","Make_sure_We_Win");
-        SPAClass.PutAccountBalance(4000.00,"AwesomeMelon","90210");
-
-
+        SPAClass.PutAccountBalance(4000.00, "AwesomeMelon", "90210");
+        Bal.setText(SPAClass.GetAccountBalance("AwesomeMelon", "90210").toString());
+        Button button = (Button)actionEvent.getSource();
+        LastClick.setText(button.getText().toString());
     }
 }

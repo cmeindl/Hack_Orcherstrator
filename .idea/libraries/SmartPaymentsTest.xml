@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SmartPaymentsTest">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../SmartPaymentsTest/out/artifacts/SmartPaymentsTest_jar/SmartPaymentsTest.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
